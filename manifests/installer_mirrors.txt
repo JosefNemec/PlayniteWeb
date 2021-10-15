@@ -1,2 +1,2 @@
-https://github.com/JosefNemec/Playnite/releases/download/8.15/Playnite815.exe
-https://playnite.link/update/stable/8.15/Playnite815.exe
+https://github.com/JosefNemec/Playnite/releases/download/9.3/Playnite93.exe
+https://playnite.link/update/stable/9.3/Playnite93.exe
