@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Playnite - video game library manager</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="Playnite - video game library manager" />
+    <meta property="og:description"
+        content="Video game library manager with one simple goal: To provide a unified interface for all of your games." />
+    <meta property="og:image" content="https://playnite.link/social_image.jpg" />
+    <meta name="description"
+        content="Video game library manager with one simple goal: To provide a unified interface for all of your games.">
+    <meta name="author" content="Playnite">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/darktheme.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/addons.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/addons.js"></script>
+    <script src="js/fuse.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-bottom navbar-inverse fixed-bottom mb-0">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-logo" href="/"><img src="applogo.png" height="48"></a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav pull-left">
+                    <li><a href="/forum/forum-11.html">News</a></li>
+                    <li><a href="/forum/">Forum</a></li>
+                    <li><a href="/addons.html">Add-ons</a></li>
+                    <li><a href="https://discord.gg/BrtABqe">Discord</a></li>
+                    <li><a href="https://github.com/JosefNemec/Playnite/">GitHub</a></li>
+                    <li><a href="https://github.com/JosefNemec/Playnite/wiki">Wiki</a></li>
+                    <li><a href="https://playnite.link/docs/">SDK</a></li>
+                </ul>
+                <div class="navbar-nav search-box-container">
+                    <input type="text" class="form-control" id="searchBox" placeholder="Search add-ons">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class='spacer'></div>
+
+    <div class="container">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="addonsGameLibraryHeader">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Libraries
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                    aria-labelledby="addonsGameLibraryHeader">
+                    <div class="panel-body" id="addonsGameLibrary">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="addonsMetadataProviderHeader">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Metadata Sources
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="addonsMetadataProviderHeader">
+                    <div class="panel-body" id="addonsMetadataProvider">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="addonsGenericHeader">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
+                            Generic
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="addonsGenericHeader">
+                    <div class="panel-body" id="addonsGeneric">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="addonsThemeDesktopHeader">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
+                            aria-expanded="false" aria-controls="collapseFour">
+                            Themes Desktop
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="addonsThemeDesktopHeader">
+                    <div class="panel-body" id="addonsThemeDesktop">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="addonsThemeFullscreenHeader">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"
+                            aria-expanded="false" aria-controls="collapseFive">
+                            Themes Fullscreen
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+                    aria-labelledby="addonsThemeFullscreenHeader">
+                    <div class="panel-body" id="addonsThemeFullscreen">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

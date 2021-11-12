@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "cors-anywhere": "^0.4.4"
+  }
+}
