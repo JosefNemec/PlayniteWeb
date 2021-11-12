@@ -1,29 +1,8 @@
-.navbar-bottom {
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%;
-  z-index: 1000;
-}
-
-.mb-0 {
-  margin-bottom: 0 !important;
-}
-
-.search-box-container {
-  width: 320px;
-  float: right;
-  margin-right: -15px;
-}
-
-#searchBox {
-  height: 34px;
-  margin: 8px 0 8px 0;
-}
-
-.spacer {
-  padding-top: 66px;
+.searchBoxContainer {
+  margin: 0 0 24px 0;
 }
 
 .addon-screenshot {
   margin: 0 4px 4px 0;
+  width: calc(50% - 4px);
 }

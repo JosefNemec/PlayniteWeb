@@ -1,3 +1,10 @@
+
+// For local development use cors-anywhere with URL below or turn off CORS in browser
+// To use cors-anywhere run 'npm i' and then 'node ./source/js/cors-anywhere.js'
+// REMEMBER to change it back before commit!
+// var apiUrl = "http://localhost:8080/http://api.playnite.link/api/addons"
+var apiUrl = "http://api.playnite.link/api/addons";
+
 var addons = [];
 var addonsGameLibrary = [];
 var addonsMetadataProvider = [];
@@ -27,13 +34,8 @@ $(document).ready(function () {
     });
 });
 
-function getAddonList() {
-    // For local development use cors-anywhere with URL below or turn off CORS in browser
-    // To use cors-anywhere run 'npm i' and then 'node ./source/js/cors-anywhere.js'
-    // var url = "http://localhost:8080/http://api.playnite.link/api/addons"
-
-    var url = "http://api.playnite.link/api/addons";
-    $.getJSON(url, function (data) {
+function getAddonList() {    
+    $.getJSON(apiUrl, function (data) {
         addons = data.data.sort(sortByName);
         resortAddons(data.data);
         rerenderAddons();
@@ -86,24 +88,29 @@ function renderAddonsSection(data, type, name) {
                     <div class='col-sm-2'> \
                         " + (val.iconUrl != undefined ? "<img src=" + val.iconUrl + " width=120></img>" : "") + "\
                     </div> \
-                    <div class='col-sm-10'> \
+                    <div class='col-sm-9'> \
                         <h4>" + val.name + "</h4> \
                         <p>" + (val.description == undefined ? val.shortDescription : val.description) + "</p> \
                 " + (val.screenshots != undefined ? "<p> \
                 " + $.map(val.screenshots,
                 function (key, _val) {
-                    return '<a href="' + key.image + '" target="_blank"><img class="addon-screenshot" src="' + key.thumbnail + '" width=400 title></img></a>';
+                    return '<a href="' + key.image + '" target="_blank"><img class="addon-screenshot" src="' + key.thumbnail + '" title></img></a>';
                 }).join('') : '') + " \
                 </p > \
-                <p> \
+                " + (val.links != undefined ? "<p> \
                 " + $.map(val.links,
                     function (key, val) {
                         return '<a href="' + key + '" target="_blank">' + val + '</a>';
-                    }).join(' | ') + " \
+                    }).join(' | ') : '')  + " \
                 </p > \
                 <p> \
                 Author: " + val.author + " \
                 </p > \
+                </div > \
+                <div class='col-sm-1'> \
+                <p class='pull-right'> \
+                <a href='playnite://playnite/installaddon/" + val.addonId + "' class='btn btn-default'>Download</a> \
+                </p> \
                     </div > \
                 </div > \
             </li > "
