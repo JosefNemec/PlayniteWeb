@@ -115,16 +115,16 @@ function renderAddonsSection(data, type, name) {
                     }).join(' | ') : '') + " \
                 </p > \
                 <p> \
-                Author: " + sanitize(val.author) + " \
-                </p > \
-                </div > \
-                <div class='col-sm-1'> \
-                <p class='pull-right'> \
-                <a href='playnite://playnite/installaddon/" + encodeURI(val.addonId) + "' class='btn btn-default'>Download</a> \
+                Author: " + sanitize(val.author) + ' \
+                </p> \
+                </div> \
+                <div class="col-sm-1"> \
+                <p class="pull-right"> \
+                <a href="playnite://playnite/installaddon/' + encodeURI(val.addonId) + '" class="btn btn-default">Download</a> \
                 </p> \
                     </div > \
                 </div > \
-            </li > "
+            </li > '
             );
         });
         $('#' + type).html('');
