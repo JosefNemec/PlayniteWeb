@@ -2,8 +2,8 @@
 // For local development use cors-anywhere with URL below or turn off CORS in browser
 // To use cors-anywhere run 'npm i' and then 'node ./source/js/cors-anywhere.js'
 // REMEMBER to change it back before commit!
-// var apiUrl = "http://localhost:8080/http://api.playnite.link/api/addons"
-var apiUrl = "http://api.playnite.link/api/addons";
+// var apiUrl = "http://localhost:8080/https://api.playnite.link/api/addons"
+var apiUrl = "https://api.playnite.link/api/addons";
 
 var addons = [];
 var addonsGameLibrary = [];
@@ -95,7 +95,7 @@ function renderAddonsSection(data, type, name) {
             <li class='list-group-item'> \
                 <div class='row'> \
                     <div class='col-sm-2'> \
-                        " + (val.iconUrl != undefined ? "<img src=" + encodeURI(val.iconUrl) + " width=120></img>" : "") + "\
+                        " + (val.iconUrl != undefined ? "<img src=" + encodeURI(val.iconUrl) + " width=120 loading='lazy'></img>" : "") + "\
                     </div> \
                     <div class='col-sm-9'> \
                         <h4>" + sanitize(val.name) + "</h4> \
@@ -103,7 +103,7 @@ function renderAddonsSection(data, type, name) {
                 " + (val.screenshots != undefined ? "<p> \
                 " + $.map(val.screenshots,
                 function (key, _val) {
-                    return '<a href="' + encodeURI(key.image) + '" target="_blank"><img class="addon-screenshot" src="' + encodeURI(key.thumbnail) + '" title></img></a>';
+                    return '<a href="' + encodeURI(key.image) + '" target="_blank"><img class="addon-screenshot" src="' + encodeURI(key.thumbnail) + '" loading="lazy"></img></a>';
                 }).join('') : '') + " \
                 </p > \
                 " + (val.links != undefined ? "<p> \
