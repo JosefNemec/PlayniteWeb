@@ -34,7 +34,7 @@ $(document).ready(function () {
     });
 });
 
-function getAddonList() {    
+function getAddonList() {
     $.getJSON(apiUrl, function (data) {
         addons = data.data.sort(sortByName);
         resortAddons(data.data);
@@ -78,6 +78,15 @@ function rerenderAddons() {
     renderAddonsSection(addonsGameLibrary, "addonsGameLibrary", "Libraries");
 }
 
+function sanitize(input) {
+    var output = input.replace(/<script[^>]*?>.*?<\/script>/gi, '').
+        replace(/<[\/\!]*?[^<>]*?>/gi, '').
+        replace(/<style[^>]*?>.*?<\/style>/gi, '').
+        replace(/<![\s\S]*?--[ \t\n\r]*>/gi, '').
+        replace(/&nbsp;/g, '');
+    return output;
+}
+
 function renderAddonsSection(data, type, name) {
     var htmlItems = [];
     if (data.length > 0) {
@@ -86,30 +95,30 @@ function renderAddonsSection(data, type, name) {
             <li class='list-group-item'> \
                 <div class='row'> \
                     <div class='col-sm-2'> \
-                        " + (val.iconUrl != undefined ? "<img src=" + val.iconUrl + " width=120></img>" : "") + "\
+                        " + (val.iconUrl != undefined ? "<img src=" + encodeURI(val.iconUrl) + " width=120></img>" : "") + "\
                     </div> \
                     <div class='col-sm-9'> \
-                        <h4>" + val.name + "</h4> \
-                        <p>" + (val.description == undefined ? val.shortDescription : val.description) + "</p> \
+                        <h4>" + sanitize(val.name) + "</h4> \
+                        <p class='addon-description'>" + sanitize(val.description == undefined ? val.shortDescription : val.description) + "</p> \
                 " + (val.screenshots != undefined ? "<p> \
                 " + $.map(val.screenshots,
                 function (key, _val) {
-                    return '<a href="' + key.image + '" target="_blank"><img class="addon-screenshot" src="' + key.thumbnail + '" title></img></a>';
+                    return '<a href="' + encodeURI(key.image) + '" target="_blank"><img class="addon-screenshot" src="' + encodeURI(key.thumbnail) + '" title></img></a>';
                 }).join('') : '') + " \
                 </p > \
                 " + (val.links != undefined ? "<p> \
                 " + $.map(val.links,
                     function (key, val) {
-                        return '<a href="' + key + '" target="_blank">' + val + '</a>';
-                    }).join(' | ') : '')  + " \
+                        return '<a href="' + encodeURI(key) + '" target="_blank">' + sanitize(val) + '</a>';
+                    }).join(' | ') : '') + " \
                 </p > \
                 <p> \
-                Author: " + val.author + " \
+                Author: " + sanitize(val.author) + " \
                 </p > \
                 </div > \
                 <div class='col-sm-1'> \
                 <p class='pull-right'> \
-                <a href='playnite://playnite/installaddon/" + val.addonId + "' class='btn btn-default'>Download</a> \
+                <a href='playnite://playnite/installaddon/" + encodeURI(val.addonId) + "' class='btn btn-default'>Download</a> \
                 </p> \
                     </div > \
                 </div > \

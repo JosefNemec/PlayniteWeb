@@ -6,3 +6,8 @@
   margin: 0 4px 4px 0;
   width: calc(50% - 4px);
 }
+
+.addon-description {
+  white-space: pre;
+  white-space: pre-line;
+}
