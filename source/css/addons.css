@@ -11,3 +11,7 @@
   white-space: pre;
   white-space: pre-line;
 }
+
+.d-none {
+  display: none;
+}

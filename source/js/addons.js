@@ -20,6 +20,7 @@ function sortByName(a, b) {
 
 $(document).ready(function () {
     getAddonList();
+    hideAlerts();
 
     $("#searchBox").keyup(function (data) {
         if (data.target.value.length > 0) {
@@ -167,3 +168,16 @@ function search(pattern) {
 
     return fuse.search(pattern)
 }
+
+function hideAlerts() {
+    const showInfoAlert = localStorage.getItem("info-alert") === null;
+    $("#info-alert").toggleClass("d-none", !showInfoAlert);
+
+    const showWarningAlert = localStorage.getItem("warning-alert") === null;
+    $("#warning-alert").toggleClass("d-none", !showWarningAlert);
+
+    $(".close").on("click", function () {
+        localStorage.setItem($(this).closest(".alert").attr('id'), "seen");
+        $(this).closest(".alert").addClass("d-none")
+    });
+};
