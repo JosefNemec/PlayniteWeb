@@ -104,12 +104,18 @@ function renderAddonsSection(data, type, name) {
                 " + $.map(val.screenshots,
                 function (key, _val) {
                     return '<a href="' + encodeURI(key.image) + '" target="_blank"><img class="addon-screenshot" src="' + encodeURI(key.thumbnail) + '" loading="lazy"></img></a>';
-                }).join('') : '') + " \
-                </p > \
-                " + (val.links != undefined ? "<p> \
+                }).join('') + "</p>" : '') + " \
+                <p> \
+                <a href=" + encodeURI(val.sourceUrl) + " target='_blank'>Source code</a> \
+                " + (val.links != undefined ? " | \
                 " + $.map(val.links,
-                    function (key, val) {
-                        return '<a href="' + encodeURI(key) + '" target="_blank">' + sanitize(val) + '</a>';
+                    function (link_key, link_val) {
+                        if (link_key !== val.sourceUrl) {
+                            return '<a href="' + encodeURI(link_key) + '" target="_blank">' + sanitize(link_val) + '</a>';
+                        }
+                        else {
+                            return null;
+                        }
                     }).join(' | ') : '') + " \
                 </p > \
                 <p> \
