@@ -1,8 +1,8 @@
 
-// For local development use cors-anywhere with URL below or turn off CORS in browser
-// To use cors-anywhere run 'npm i' and then 'node ./source/js/cors-anywhere.js'
+// For local development use thing-proxy with URL below or turn off CORS in browser
+// To use thing-proxy 'cd source/js/thing-proxy && npm i && node server.js'
 // REMEMBER to change it back before commit!
-// var apiUrl = "http://localhost:8080/https://api.playnite.link/api/addons"
+// var apiUrl = "http://localhost:3000/fetch/https://api.playnite.link/api/addons"
 var apiUrl = "https://api.playnite.link/api/addons";
 
 var addons = [];
