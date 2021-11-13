@@ -80,12 +80,7 @@ function rerenderAddons() {
 }
 
 function sanitize(input) {
-    var output = input.replace(/<script[^>]*?>.*?<\/script>/gi, '').
-        replace(/<[\/\!]*?[^<>]*?>/gi, '').
-        replace(/<style[^>]*?>.*?<\/style>/gi, '').
-        replace(/<![\s\S]*?--[ \t\n\r]*>/gi, '').
-        replace(/&nbsp;/g, '');
-    return output;
+    return input.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 function renderAddonsSection(data, type, name) {
