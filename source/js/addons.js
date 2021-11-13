@@ -91,7 +91,7 @@ function renderAddonsSection(data, type, name) {
             <li class='list-group-item'> \
                 <div class='row'> \
                     <div class='col-sm-2'> \
-                        " + (val.iconUrl != undefined ? "<img src=" + encodeURI(val.iconUrl) + " width=120 loading='lazy'></img>" : "") + "\
+                        " + (val.iconUrl != undefined ? '<img src="' + encodeURI(val.iconUrl) + '" width=120 loading="lazy"></img>' : "") + "\
                     </div> \
                     <div class='col-sm-9'> \
                         <h4>" + sanitize(val.name) + "</h4> \
