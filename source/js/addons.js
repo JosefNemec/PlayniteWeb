@@ -100,10 +100,10 @@ function renderAddonsSection(data, type, name) {
                 " + $.map(val.screenshots,
                 function (key, _val) {
                     return '<a href="' + encodeURI(key.image) + '" target="_blank"><img class="addon-screenshot" src="' + encodeURI(key.thumbnail) + '" loading="lazy"></img></a>';
-                }).join('') + "</p>" : '') + " \
+                }).join('') + "</p>" : '') + ' \
                 <p> \
-                <a href=" + encodeURI(val.sourceUrl) + " target='_blank'>Source code</a> \
-                " + (val.links != undefined ? " | \
+                <a href="' + encodeURI(val.sourceUrl) + "' target="_blank">Source code</a> \
+                ' + (val.links != undefined ? " | \
                 " + $.map(val.links,
                     function (link_key, link_val) {
                         if (link_key !== val.sourceUrl) {
