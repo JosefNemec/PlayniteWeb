@@ -15,3 +15,22 @@
 .d-none {
   display: none;
 }
+
+.alert-info {
+  background-color: #0067ab;
+  border-color: #002589;
+}
+
+.alert-danger {
+  background-color: #90130f;
+  border-color: #710f0c;
+}
+
+.close {
+  opacity: 0.5;
+  text-shadow: none;
+}
+
+.close:hover {
+  opacity: 1;
+}
