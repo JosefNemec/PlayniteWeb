@@ -97,22 +97,11 @@ function renderAddonsSection(data, type, name) {
                         <h4>" + sanitize(val.name) + "</h4> \
                         <p class='addon-description'>" + sanitize(val.description == undefined ? val.shortDescription : val.description) + "</p> \
                 " + (val.screenshots != undefined ? "<p> \
-                " + $.map(val.screenshots,
-                function (key, _val) {
-                    return '<a href="' + encodeURI(key.image) + '" target="_blank"><img class="addon-screenshot" src="' + encodeURI(key.thumbnail) + '" loading="lazy"></img></a>';
-                }).join('') + "</p>" : '') + ' \
+                " + renderScreenshots(val).join('') + "</p>" : '') + ' \
                 <p> \
                 <a href="' + encodeURI(val.sourceUrl) + '" target="_blank">Source code</a> \
-                ' + (val.links != undefined ? " | \
-                " + $.map(val.links,
-                    function (link_key, link_val) {
-                        if (link_key !== val.sourceUrl) {
-                            return '<a href="' + encodeURI(link_key) + '" target="_blank">' + sanitize(link_val) + '</a>';
-                        }
-                        else {
-                            return null;
-                        }
-                    }).join(' | ') : '') + " \
+                ' + ((val.links != undefined && renderLinks(val).length > 0) ? " | \
+                " + renderLinks(val).join(' | ') : '') + " \
                 </p > \
                 <p> \
                 Author: " + sanitize(val.author) + ' \
@@ -137,6 +126,25 @@ function renderAddonsSection(data, type, name) {
         $('#' + type).html('None');
     }
     $('#' + type + 'Header').children('h4').children('a').text(name + ' (' + data.length + ')');
+}
+
+function renderScreenshots(val) {
+    return $.map(val.screenshots,
+        function (link_key, _val) {
+            return '<a href="' + encodeURI(link_key.image) + '" target="_blank"><img class="addon-screenshot" src="' + encodeURI(link_key.thumbnail) + '" loading="lazy"></img></a>';
+        });
+}
+
+function renderLinks(val) {
+    return $.map(val.links,
+        function (link_key, link_val) {
+            if (link_key !== val.sourceUrl) {
+                return '<a href="' + encodeURI(link_key) + '" target="_blank">' + sanitize(link_val) + '</a>';
+            }
+            else {
+                return null;
+            }
+        });
 }
 
 function search(pattern) {
