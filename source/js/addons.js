@@ -56,15 +56,9 @@ function copyUrl(addonId) {
     navigator.clipboard.writeText(window.location.href.split('?')[0] + '?addonId=' + encodeURI(addonId));
 }
 
-function showAndScroll(elementId, addonId) {
-    function scrollToAddon() {
-        addonElement = document.getElementById(addonId);
-        addonElement.scrollIntoView(true);
-        addonElement.classList.add('chosen-addon');
-
-        $(elementId).off('shown.bs.collapse', scrollToAddon);
-    }
-    $(elementId).on('shown.bs.collapse', scrollToAddon);
+function triggerSearch(elementId, addonId) {
+    $("#searchBox").val(addonId);
+    $("#searchBox").keyup();
     $(elementId).collapse('show');
 }
 
@@ -72,24 +66,24 @@ function highlightChosenAddon() {
     let searchParams = new URLSearchParams(window.location.search)
     if (searchParams.has('addonId')) {
         var addonId = searchParams.get('addonId')
-        addons = addons.filter(addon => addon.addonId === addonId);
-        if (addons.length > 0) {
-            var addon = addons[0];
+        choosenAddons = addons.filter(addon => addon.addonId === addonId);
+        if (choosenAddons.length > 0) {
+            var addon = choosenAddons[0];
             switch (addon.type) {
                 case 1:
-                    showAndScroll('#collapseTwo', addonId);
+                    triggerSearch('#collapseTwo', addonId);
                     break;
                 case 2:
-                    showAndScroll('#collapseThree', addonId);
+                    triggerSearch('#collapseThree', addonId);
                     break;
                 case 3:
-                    showAndScroll('#collapseFour', addonId);
+                    triggerSearch('#collapseFour', addonId);
                     break;
                 case 4:
-                    showAndScroll('#collapseFive', addonId);
+                    triggerSearch('#collapseFive', addonId);
                     break;
                 case undefined:
-                    showAndScroll('#collapseOne', addonId);
+                    triggerSearch('#collapseOne', addonId);
                     break;
                 default:
             }
@@ -99,8 +93,6 @@ function highlightChosenAddon() {
     } else {
         $('#collapseOne').collapse('show')
     }
-
-
 }
 
 function resortAddons(data) {
@@ -218,12 +210,13 @@ function search(pattern) {
         // findAllMatches: false,
         // minMatchCharLength: 1,
         // location: 0,
-        // threshold: 0.6,
+        threshold: 0.2,
         // distance: 100,
         // useExtendedSearch: false,
         // ignoreLocation: false,
         // ignoreFieldNorm: false,
         keys: [
+            "addonId",
             "name",
             "description"
         ]

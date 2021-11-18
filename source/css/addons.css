@@ -40,19 +40,6 @@
   opacity: 1;
 }
 
-.chosen-addon {
-  animation: highlight 1500ms ease-out;
-}
-
-@keyframes highlight {
-  0% {
-    background-color: #0067ab;
-  }
-  100% {
-    background-color: none;
-  }
-}
-
 .clicked-header {
   animation: highlight 500ms ease-out;
 }
