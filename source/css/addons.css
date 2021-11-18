@@ -7,6 +7,11 @@
   width: calc(50% - 4px);
 }
 
+.clickable-header {
+  cursor: pointer;
+  width: fit-content;
+}
+
 .addon-description {
   white-space: pre;
   white-space: pre-line;
@@ -33,4 +38,30 @@
 
 .close:hover {
   opacity: 1;
+}
+
+.chosen-addon {
+  animation: highlight 1500ms ease-out;
+}
+
+@keyframes highlight {
+  0% {
+    background-color: #0067ab;
+  }
+  100% {
+    background-color: none;
+  }
+}
+
+.clicked-header {
+  animation: highlight 500ms ease-out;
+}
+
+@keyframes highlight {
+  0% {
+    background-color: #0067ab;
+  }
+  100% {
+    background-color: none;
+  }
 }

@@ -42,7 +42,65 @@ function getAddonList() {
         addons = data.data.sort(sortByName);
         resortAddons(data.data);
         rerenderAddons();
+        $('#loading-indicator').hide();
+        $('#accordion').show();
+        highlightChosenAddon();
     });
+}
+
+function copyUrl(addonId) {
+    document.getElementById(addonId).getElementsByClassName('clickable-header')[0].classList.add('clicked-header')
+    setTimeout(() => {
+        document.getElementById(addonId).getElementsByClassName('clickable-header')[0].classList.remove('clicked-header')
+    }, 500)
+    navigator.clipboard.writeText(window.location.href.split('?')[0] + '?addonId=' + encodeURI(addonId));
+}
+
+function showAndScroll(elementId, addonId) {
+    function scrollToAddon() {
+        addonElement = document.getElementById(addonId);
+        addonElement.scrollIntoView(true);
+        addonElement.classList.add('chosen-addon');
+
+        $(elementId).off('shown.bs.collapse', scrollToAddon);
+    }
+    $(elementId).on('shown.bs.collapse', scrollToAddon);
+    $(elementId).collapse('show');
+}
+
+function highlightChosenAddon() {
+    let searchParams = new URLSearchParams(window.location.search)
+    if (searchParams.has('addonId')) {
+        var addonId = searchParams.get('addonId')
+        addons = addons.filter(addon => addon.addonId === addonId);
+        if (addons.length > 0) {
+            var addon = addons[0];
+            switch (addon.type) {
+                case 1:
+                    showAndScroll('#collapseTwo', addonId);
+                    break;
+                case 2:
+                    showAndScroll('#collapseThree', addonId);
+                    break;
+                case 3:
+                    showAndScroll('#collapseFour', addonId);
+                    break;
+                case 4:
+                    showAndScroll('#collapseFive', addonId);
+                    break;
+                case undefined:
+                    showAndScroll('#collapseOne', addonId);
+                    break;
+                default:
+            }
+        } else {
+            $('#collapseOne').collapse('show')
+        }
+    } else {
+        $('#collapseOne').collapse('show')
+    }
+
+
 }
 
 function resortAddons(data) {
@@ -91,14 +149,14 @@ function renderAddonsSection(data, type, name) {
     var htmlItems = [];
     if (data.length > 0) {
         $.each(data, function (_key, val) {
-            htmlItems.push(" \
-            <li class='list-group-item'> \
-                <div class='row'> \
-                    <div class='col-sm-2'> \
-                        " + (val.iconUrl != undefined ? '<img src="' + encodeURI(val.iconUrl) + '" width=120 loading="lazy"></img>' : "") + "\
+            htmlItems.push(' \
+            <li class="list-group-item" id="' + sanitize(val.addonId) + '"> \
+                <div class="row"> \
+                    <div class="col-sm-2"> \
+                        ' + (val.iconUrl != undefined ? '<img src="' + encodeURI(val.iconUrl) + '" width=120 loading="lazy"></img>' : "") + '\
                     </div> \
-                    <div class='col-sm-9'> \
-                        <h4>" + sanitize(val.name) + "</h4> \
+                    <div class="col-sm-9"> \
+                        <h4 class="clickable-header" onclick="copyUrl(\'' + sanitize(val.addonId) + '\');">' + sanitize(val.name) + " <span class='glyphicon glyphicon-link' aria-hidden='true'></span></h4> \
                         <p class='addon-description'>" + sanitize(val.description == undefined ? val.shortDescription : val.description) + "</p> \
                 " + (val.screenshots != undefined ? "<p> \
                 " + renderScreenshots(val).join('') + "</p>" : '') + ' \

@@ -72,16 +72,23 @@
             <input type="text" class="form-control" id="searchBox" placeholder="Type to search" aria-describedby="searchBoxLabel">
         </div>
 
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-default" id="loading-indicator">
+            <div class="panel-body">
+                Loading...
+            </div>
+        </div>
+
+        <div class="panel-group d-none" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="addonsGameLibraryHeader">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             Libraries
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="addonsGameLibraryHeader">
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addonsGameLibraryHeader">
                     <div class="panel-body" id="addonsGameLibrary">
                         Loading...
                     </div>
