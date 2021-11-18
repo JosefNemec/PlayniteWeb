@@ -18,6 +18,8 @@ function sortByName(a, b) {
     return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
 }
 
+
+
 $(document).ready(function () {
     getAddonList();
     hideAlerts();
@@ -77,6 +79,8 @@ function rerenderAddons() {
     renderAddonsSection(addonsThemeDesktop, "addonsThemeDesktop", "Themes Desktop");
     renderAddonsSection(addonsThemeFullscreen, "addonsThemeFullscreen", "Themes Fullscreen");
     renderAddonsSection(addonsGameLibrary, "addonsGameLibrary", "Libraries");
+
+    $('[data-toggle="tooltip"]').tooltip();
 }
 
 function sanitize(input) {
@@ -109,7 +113,7 @@ function renderAddonsSection(data, type, name) {
                 </div> \
                 <div class="col-sm-1"> \
                 <p class="pull-right"> \
-                <a href="playnite://playnite/installaddon/' + encodeURI(val.addonId) + '" class="btn btn-default">Download</a> \
+                <a href="playnite://playnite/installaddon/' + encodeURI(val.addonId) + '" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Requires Playnite to be installed.">Download</a> \
                 </p> \
                     </div > \
                 </div > \
