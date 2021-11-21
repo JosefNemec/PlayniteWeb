@@ -35,6 +35,8 @@ $(document).ready(function () {
             rerenderAddons();
         }
     });
+
+    window.addEventListener('hashchange', highlightChosenAddon)
 });
 
 function getAddonList() {
@@ -53,7 +55,7 @@ function copyUrl(addonId) {
     setTimeout(() => {
         document.getElementById(addonId).getElementsByClassName('clickable-header')[0].classList.remove('clicked-header')
     }, 500)
-    navigator.clipboard.writeText(window.location.href.split('?')[0] + '?addonId=' + encodeURI(addonId));
+    navigator.clipboard.writeText(window.location.href.split('#')[0] + '#' + encodeURI(addonId));
 }
 
 function triggerSearch(elementId, addonId) {
@@ -63,9 +65,8 @@ function triggerSearch(elementId, addonId) {
 }
 
 function highlightChosenAddon() {
-    let searchParams = new URLSearchParams(window.location.search)
-    if (searchParams.has('addonId')) {
-        var addonId = searchParams.get('addonId')
+    if (window.location.hash !== undefined) {
+        let addonId = window.location.hash.substring(1);
         choosenAddons = addons.filter(addon => addon.addonId === addonId);
         if (choosenAddons.length > 0) {
             var addon = choosenAddons[0];
@@ -210,7 +211,7 @@ function search(pattern) {
         // findAllMatches: false,
         // minMatchCharLength: 1,
         // location: 0,
-        threshold: 0.2,
+        threshold: 0.1,
         // distance: 100,
         // useExtendedSearch: false,
         // ignoreLocation: false,
