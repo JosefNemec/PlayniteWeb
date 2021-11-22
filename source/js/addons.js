@@ -55,7 +55,9 @@ function copyUrl(addonId) {
     setTimeout(() => {
         document.getElementById(addonId).getElementsByClassName('clickable-header')[0].classList.remove('clicked-header')
     }, 500)
-    navigator.clipboard.writeText(window.location.href.split('#')[0] + '#' + encodeURI(addonId));
+    var urlToCopy = window.location.href.split('#')[0] + '#' + encodeURI(addonId);
+    navigator.clipboard.writeText(urlToCopy);
+    window.location = urlToCopy
 }
 
 function triggerSearch(elementId, addonId) {
