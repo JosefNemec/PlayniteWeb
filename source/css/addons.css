@@ -1,0 +1,54 @@
+.searchBoxContainer {
+  margin: 0 0 24px 0;
+}
+
+.addon-screenshot {
+  margin: 0 4px 4px 0;
+  width: calc(50% - 4px);
+}
+
+.clickable-header {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.addon-description {
+  white-space: pre;
+  white-space: pre-line;
+}
+
+.d-none {
+  display: none;
+}
+
+.alert-info {
+  background-color: #0067ab;
+  border-color: #002589;
+}
+
+.alert-danger {
+  background-color: #b81913;
+  border-color: #a01611;
+}
+
+.close {
+  opacity: 0.5;
+  text-shadow: none;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.clicked-header {
+  animation: highlight 500ms ease-out;
+}
+
+@keyframes highlight {
+  0% {
+    background-color: #0067ab;
+  }
+  100% {
+    background-color: none;
+  }
+}
