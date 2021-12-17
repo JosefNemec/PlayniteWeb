@@ -1,2 +1,2 @@
-https://github.com/JosefNemec/Playnite/releases/download/9.11/Playnite911.exe
-https://playnite.link/update/stable/9.11/Playnite911.exe
+https://github.com/JosefNemec/Playnite/releases/download/9.12/Playnite912.exe
+https://playnite.link/update/stable/9.12/Playnite912.exe
