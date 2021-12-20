@@ -69,6 +69,9 @@ function triggerSearch(elementId, addonId) {
 function highlightChosenAddon() {
     if (window.location.hash !== undefined) {
         let addonId = window.location.hash.substring(1);
+        if (addonId !== undefined) {
+            addonId = decodeURI(addonId)
+        }
         choosenAddons = addons.filter(addon => addon.addonId === addonId);
         if (choosenAddons.length > 0) {
             var addon = choosenAddons[0];
