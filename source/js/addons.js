@@ -219,7 +219,7 @@ function search(pattern) {
         threshold: 0.1,
         // distance: 100,
         // useExtendedSearch: false,
-        // ignoreLocation: false,
+        ignoreLocation: true,
         // ignoreFieldNorm: false,
         keys: [
             "addonId",
