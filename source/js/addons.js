@@ -68,33 +68,45 @@ function triggerSearch(elementId, addonId) {
 
 function highlightChosenAddon() {
     if (window.location.hash !== undefined) {
-        let addonId = window.location.hash.substring(1);
-        if (addonId !== undefined) {
-            addonId = decodeURI(addonId)
+        let query = window.location.hash.substring(1);
+
+        if (query !== undefined) {
+            query = decodeURI(query)
         }
-        choosenAddons = addons.filter(addon => addon.addonId === addonId);
-        if (choosenAddons.length > 0) {
-            var addon = choosenAddons[0];
-            switch (addon.type) {
-                case 1:
-                    triggerSearch('#collapseTwo', addonId);
-                    break;
-                case 2:
-                    triggerSearch('#collapseThree', addonId);
-                    break;
-                case 3:
-                    triggerSearch('#collapseFour', addonId);
-                    break;
-                case 4:
-                    triggerSearch('#collapseFive', addonId);
-                    break;
-                case undefined:
-                    triggerSearch('#collapseOne', addonId);
-                    break;
-                default:
+
+        sectionId = { 'libraries': 'collapseOne', 'metadataSources': 'collapseTwo', 'generic': 'collapseThree', 'themesDesktop': 'collapseFour', 'themesFullscreen': 'collapseFive' }[query]
+
+        if (sectionId) {
+            // process as section
+            $('#' + sectionId).collapse('show')
+        }
+        else {
+            // process as addon
+            let addonId = query;
+            choosenAddons = addons.filter(addon => addon.addonId === addonId);
+            if (choosenAddons.length > 0) {
+                var addon = choosenAddons[0];
+                switch (addon.type) {
+                    case 1:
+                        triggerSearch('#collapseTwo', addonId);
+                        break;
+                    case 2:
+                        triggerSearch('#collapseThree', addonId);
+                        break;
+                    case 3:
+                        triggerSearch('#collapseFour', addonId);
+                        break;
+                    case 4:
+                        triggerSearch('#collapseFive', addonId);
+                        break;
+                    case undefined:
+                        triggerSearch('#collapseOne', addonId);
+                        break;
+                    default:
+                }
+            } else {
+                $('#collapseOne').collapse('show')
             }
-        } else {
-            $('#collapseOne').collapse('show')
         }
     } else {
         $('#collapseOne').collapse('show')
