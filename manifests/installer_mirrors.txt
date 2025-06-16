@@ -1,2 +1,2 @@
-https://github.com/JosefNemec/Playnite/releases/download/10.36/Playnite1036.exe
-https://playnite.link/update/stable/10.36/Playnite1036.exe
+https://github.com/JosefNemec/Playnite/releases/download/10.37/Playnite1037.exe
+https://playnite.link/update/stable/10.37/Playnite1037.exe
