@@ -44,6 +44,16 @@
   animation: highlight 500ms ease-out;
 }
 
+.communityNote:empty {
+    display: none;
+}
+
+.communityNote {
+  border: 3px solid #0067ab;
+  border-radius: 4px;
+  padding: 16px;
+}
+
 @keyframes highlight {
   0% {
     background-color: #0067ab;

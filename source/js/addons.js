@@ -166,6 +166,9 @@ function renderAddonsSection(data, type, name) {
                         ' + (val.iconUrl != undefined ? '<img src="' + encodeURI(val.iconUrl) + '" width=120 loading="lazy"></img>' : "") + '\
                     </div> \
                     <div class="col-sm-9"> \
+                        <p class="communityNote">' + (val.communityNote != undefined ? val.communityNote : '') + '</p> \
+                    </div> \
+                    <div class="col-sm-9"> \
                         <h4 class="clickable-header" onclick="copyUrl(\'' + sanitize(val.addonId) + '\');">' + sanitize(val.name) + " <span class='glyphicon glyphicon-link' aria-hidden='true'></span></h4> \
                         <p class='addon-description'>" + sanitize(val.description == undefined ? val.shortDescription : val.description) + "</p> \
                 " + (val.screenshots != undefined ? "<p> \
